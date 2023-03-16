@@ -38,7 +38,7 @@
 	};
 
 	const dicePlayer1 = (random) => {
-		let audio = new Audio('win.mp3');
+		let audio = new Audio('src/win.mp3');
 		if (random === p1Score) {
 			// player one winner
 			winnerElm.textContent = `${player1}  won!!`;
@@ -61,14 +61,14 @@
 		if (random === p1Score && random === p2Score) {
 			// draw
 			winnerElm.textContent = 'draw';
-			let audio = new Audio('killed.mp3');
+			let audio = new Audio('src/killed.mp3');
 			audio.play();
 			playBtnElm.setAttribute('disabled', 'disabled');
 			editBtnElm.setAttribute('disabled', 'disabled');
 		}
 	};
 	const playSound = () => {
-		let audio = new Audio('rolling-dice.mp3');
+		let audio = new Audio('src/rolling-dice.mp3');
 		audio.loop = false;
 		audio.play();
 	};
