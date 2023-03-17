@@ -19,6 +19,7 @@
 	let p2Score = 0;
 	let player1 = 'Player One';
 	let player2 = 'Player Two';
+	let audio;
 
 	const moveFunc = () => {
 		setTimeout(() => {
@@ -38,7 +39,7 @@
 	};
 
 	const dicePlayer1 = (random) => {
-		let audio = new Audio('src/win.mp3');
+		audio = new Audio('src/win.mp3');
 		if (random === p1Score) {
 			// player one winner
 			winnerElm.textContent = `${player1}  won!!`;
@@ -61,14 +62,14 @@
 		if (random === p1Score && random === p2Score) {
 			// draw
 			winnerElm.textContent = 'draw';
-			let audio = new Audio('src/killed.mp3');
+			audio = new Audio('src/killed.mp3');
 			audio.play();
 			playBtnElm.setAttribute('disabled', 'disabled');
 			editBtnElm.setAttribute('disabled', 'disabled');
 		}
 	};
 	const playSound = () => {
-		let audio = new Audio('src/rolling-dice.mp3');
+		audio = new Audio('src/rolling-dice.mp3');
 		audio.loop = false;
 		audio.play();
 	};
@@ -181,11 +182,12 @@
 		player1 = 'Player One';
 		player2 = 'Player Two';
 		playerOneScoreElm.textContent = p1Score;
-		imgElm.style.transform = 'rotateX(0deg) rotateY(0deg)';
 		playerTwoScoreElm.textContent = p2Score;
 		winnerElm.textContent = '';
 		playBtnElm.removeAttribute('disabled');
 		editBtnElm.removeAttribute('disabled');
+		imgElm.style.transform = 'rotateX(0deg) rotateY(0deg)';
+		audio.pause();
 		setInitialDOM();
 	});
 	editBtnElm.addEventListener('click', () => {
